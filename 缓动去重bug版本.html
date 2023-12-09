@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        position: absolute;
+        left: 0;
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+    }
+</style>
+
+<body>
+    <button class="b1">点击500</button>
+    <button class="b2">点击800</button>
+    <div>
+        缓动
+    </div>
+
+    <script>
+
+        var btn = document.querySelector('.b1');
+        var btn1 = document.querySelector('.b2')
+        var div = document.querySelector('div');
+        btn.addEventListener('click', function () {
+            div.timer = setInterval(function () {
+                var step = (500 - div.offsetLeft) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                if (div.offsetLeft == 500) {
+                    clearInterval(div.timer);
+                }
+                div.style.left = div.offsetLeft + step + 'px';
+            }, 20)
+        })
+        btn1.addEventListener('click', function () {
+            div.timer = setInterval(function () {
+                var step = (800 - div.offsetLeft) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                if (div.offsetLeft == 800) {
+                    clearInterval(div.timer);
+                }
+                div.style.left = div.offsetLeft + step + 'px';
+            }, 20)
+        })
+
+    </script>
+</body>
+
+</html>
